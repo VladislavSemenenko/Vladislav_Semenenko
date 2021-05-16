@@ -1,5 +1,5 @@
 ---
-- name: Create empty file
+- name: Create empty file 
   hosts: IaaS
   become: yes
 
