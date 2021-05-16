@@ -1,0 +1,5 @@
+---
+# fetch a linux distro name/version
+- set_fact: Host_LDName_LDVersion="{{ inventory_hostname }} {{ ansible_distribution }} {{ ansible_distribution_version }}"
+- debug:
+    var: Host_LDName_LDVersion

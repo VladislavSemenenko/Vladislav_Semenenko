@@ -1,0 +1,16 @@
+---
+- name: Create empty file
+  hosts: IaaS
+  become: yes
+
+  roles:
+    - Create_File
+
+
+- name: Fetch linux distro name/version
+  hosts: all
+  become: yes
+  
+  roles:
+    - Fetch_Linux_Name_Version
+

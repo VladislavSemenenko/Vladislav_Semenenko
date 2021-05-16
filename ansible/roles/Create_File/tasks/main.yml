@@ -1,0 +1,9 @@
+---
+- name: Create an empty file with permissions
+  copy:
+    content: ""
+    dest: /etc/iaac
+    force: no
+    owner: root
+    group: root
+    mode: 0500
