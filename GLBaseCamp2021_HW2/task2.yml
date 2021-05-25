@@ -1,0 +1,20 @@
+---
+- name: Configure TCP Wrappers
+  hosts: VIRTUAL_M
+  become: yes
+  vars:
+    master: "192.168.1.190"
+    worker: "192.168.1.104"
+
+  tasks:
+    - name: Make rules deny
+      lineinfile:
+        state: present
+        dest: "/etc/hosts.deny"
+        line: "sshd: ALL"
+
+    - name: Make rules allow
+      lineinfile:
+        state: present
+        dest: "/etc/hosts.allow"
+        line: "sshd: {{ master }}, {{ worker }}"

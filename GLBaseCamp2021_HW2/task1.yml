@@ -1,0 +1,15 @@
+---
+- name: Hardening user password
+  hosts: VIRTUAL_M
+  become: yes
+
+  tasks:
+    - name: Change PAM config for CentOS, Fedora, and EulerOS based on Red Hat 7.0
+      pamd:
+        name: system-auth
+        module_path: pam_pwquality.so
+        module_arguments: "enforce_for_root usercheck=1"
+        state: args_present
+        type: password
+        control: 'requisite'
+      when: ansible_facts['os_family'] == "RedHat"
